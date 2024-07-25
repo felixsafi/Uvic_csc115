@@ -77,7 +77,12 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
 	}
 	
 	private void bubbleUp(int index) {
-		// TODO: implement this
+		int parent = Math.floorDiv(index, 2);
+		if(index <=1 || storage[parent].compareTo(storage[index])<=0){
+			return;
+		}
+		swap(index, parent);
+		bubbleUp(parent);
 	}
 			
 	public T removeMin() throws HeapEmptyException {
@@ -103,19 +108,11 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
 	}
 
 	public boolean isEmpty(){
-		int max;
-		if (rootIndex == 0) {
-			max = storage.length;
-		} else {
-			max = storage.length - 1;
-		}
-		return currentSize == max;
+		return currentSize == 0;
 	}
 	
 	public boolean isFull() {
-		// TODO: implement this
-		
-		return false; // so it compiles
+		return (currentSize>=storage.length-1);
 	}
 
 	private boolean isLeaf(int index) {
@@ -134,8 +131,6 @@ public class HeapPriorityQueue<T extends Comparable<T>> implements PriorityQueue
 	}
 	
 	public int size () {
-
-		
 		return currentSize; // so it compiles
 	}
 	

@@ -69,8 +69,11 @@ public class Patient implements Comparable<Patient>{
 	 * HINT: the Time class implements compareable too!
 	 */
 	public int compareTo(Patient other) {
-		// TODO: implement this
-		return -1; // so it compiles;
+		if (this.priorityLevel != other.priorityLevel) {
+				return Integer.compare(this.priorityLevel, other.priorityLevel);
+		} else {
+			return this.checkinTime.compareTo(other.checkinTime);
+		}
 	}
 
 	/* Method Name: equals
@@ -81,8 +84,14 @@ public class Patient implements Comparable<Patient>{
 	 * Returns: true if this Patient is the same as other, false otherwise
 	 */
 	public boolean equals(Patient other) {
-		// TODO: implement this
-		return false; // so it compiles;
+		boolean equals = true;
+		if (this == other){
+			return true;
+		}
+		if(other == null){
+			return false;
+		}
+		return this.waitingNumber.equals(other.waitingNumber);
 	}
 }
 

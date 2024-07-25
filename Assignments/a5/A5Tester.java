@@ -27,8 +27,8 @@ public class A5Tester {
 		stressTest();
 
 		System.out.println("Testing Application using Priority Queue.");
-		// testPatient();
-		// testEmergencyRoom();
+		testPatient();
+		testEmergencyRoom();
 		
 
 		System.out.println("PASSED " + testPassCount + "/" + testCount + " tests");

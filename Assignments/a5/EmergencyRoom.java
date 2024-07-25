@@ -31,7 +31,8 @@ public class EmergencyRoom {
 	 * Returns: void - nothing
 	 */
 	public void addPatient(Patient p) {
-		// TODO: implement this
+			if(patients.size()==numPatientsWaiting()) System.out.println("Patients list is full");
+            patients.insert(p);
 	}
 
 
@@ -40,8 +41,7 @@ public class EmergencyRoom {
 	 * Returns: int - number of patients waiting to be helped
 	 */
 	public int numPatientsWaiting() {
-		// TODO: implement this
-		return -1; // so it compiles
+		return patients.size();
 	}
 
 
@@ -50,8 +50,8 @@ public class EmergencyRoom {
 	 * Returns: Patient - the next patient, null if there is no more patients.
 	 */
 	public Patient nextPatient() {
-		// TODO: implement this
-		return null; // so it compiles
+		if (patients.isEmpty()) return null;
+		return patients.removeMin();
 	}
 }
 
