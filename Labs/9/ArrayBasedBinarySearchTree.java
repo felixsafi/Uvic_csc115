@@ -5,49 +5,24 @@ public class ArrayBasedBinarySearchTree extends ArrayBasedBinaryTree{
     }
 
     public void insert(Integer value){
-         //if the tree is empty
-         if(!isLeaf(this.root)){
-            insRec(value, root, true);
-            size++;
-            
-        //else, Call Recursive add method, then update size
-        }else{
-            data[root]=value;
-            size++;
-        }
+        insRec(value, root);
+        size++;
     }
     
-    //lr bool stands for left(true)/right(false)
-    public void insRec(Integer value, Integer root, boolean lr){
-        if(isLeaf(root)){
+    public void insRec(Integer value, Integer root){
+        if(data[root]==null){
+            data[root] = value;
             return;
         }
-        if(comparer(root)<=0){
-            insRec(root, getLeft(root), true);
+        if(value.compareTo(data[root])<=0){
+            insRec(root, getLeft(root));
         }else{
-            insRec(root, getRight(root), false);
-        }
-
-        if(lr){
-            data[getLeft(root)] = value;
-        }else{
-            data[getRight(root)] = value;
+            insRec(root, getRight(root));
         }
     }
 
-    public int comparer(Integer index){
-        return data[getLeft(root)].compareTo(data[getRight(root)]);
-    }
-
-    public boolean isLeaf(Integer parent){
-        return (Math.max(getLeft(root), getRight(root))>size);
-    }
-
-    
     public static void main(String[] args) {
         ArrayBasedBinarySearchTree emptyTree = new ArrayBasedBinarySearchTree();
-
-
         
         ArrayBasedBinarySearchTree myTree = new ArrayBasedBinarySearchTree();
         myTree.insert(2);

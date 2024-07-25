@@ -6,6 +6,31 @@ import java.lang.Math;
  */
 public class RefBasedBinarySearchTree extends RefBasedBinaryTree {
 
+    public RefBasedBinarySearchTree(){
+        super();
+    }
+
+
+    public void insert(Integer value){
+            root = insert(root, value);        
+    }
+
+    private TreeNode insert(TreeNode t, Integer value) {
+        if (t==null) {
+            return new TreeNode(value);
+        }
+        if (t.getValue().compareTo(value)>0){
+            t.setLeft(insert(t.getLeft(), value));
+        }else{
+            t.setRight(insert(t.getRight(), value));
+        }
+
+        return t;
+    }
+
+    // private boolean isLeaf(TreeNode potentialLeaf){
+    //     return (potentialLeaf.getLeft()==null&&potentialLeaf.getRight()==null);
+    // }
 
     public static void main(String[] args) {
         // use these trees to test the methods you will implement
